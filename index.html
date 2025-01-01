@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#652697">
   <title>Page Links</title>
   <style>
     html, body {
@@ -81,6 +83,18 @@
         console.error('JSON parse error:', e);
       }
     };
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
   </script>
 </head>
 <body>
@@ -89,88 +103,88 @@
   </div>
 
   <!-- JSON data -->
-<script id="links-data" type="application/json">
-{
-  "dials": [
-    {
-      "id": 10,
-      "title": "Search",
-      "url": "https://www.google.com",
-      "thumbnail": "./mobicons/Google_G.svg",
-      "position": 0
-    },
-    {
-      "id": 12,
-      "title": "Perplexity",
-      "url": "https://www.perplexity.ai",
-      "thumbnail": "./mobicons/Perplexity.svg",
-      "position": 1
-    },
-    {
-      "id": 1,
-      "title": "ODB",
-      "url": "https://odb.org/today",
-      "thumbnail": "./mobicons/odb.svg",
-      "position": 2
-    },
-    {
-      "id": 2,
-      "title": "Motivator",
-      "url": "https://greatday.com/",
-      "thumbnail": "./mobicons/rocket.svg",
-      "position": 3
-    },
-    {
-      "id": 3,
-      "title": "Alux",
-      "url": "https://www.youtube.com/@alux/videos",
-      "thumbnail": "./mobicons/YouTube.svg",
-      "position": 4
-    },
-    {
-      "id": 11,
-      "title": "HBR",
-      "url": "https://youtube.com/@harvardbusinessreview/videos",
-      "thumbnail": "./mobicons/YouTube.svg",
-      "position": 5
-    },
-    {
-      "id": 4,
-      "title": "Myron Golden",
-      "url": "https://www.youtube.com/@MyronGolden/videos",
-      "thumbnail": "./mobicons/YouTube.svg",
-      "position": 6
-    },
-    {
-      "id": 5,
-      "title": "Alex Hormozi",
-      "url": "https://www.youtube.com/@AlexHormozi/videos",
-      "thumbnail": "./mobicons/YouTube.svg",
-      "position": 7
-    },
-    {
-      "id": 6,
-      "title": "Simon Sinek",
-      "url": "https://www.youtube.com/@SimonSinek/videos",
-      "thumbnail": "./mobicons/YouTube.svg",
-      "position": 8
-    },
-    {
-      "id": 7,
-      "title": "Lewis Howes",
-      "url": "https://www.youtube.com/@lewishowes/videos",
-      "thumbnail": "./mobicons/YouTube.svg",
-      "position": 9
-    },
-    {
-      "id": 8,
-      "title": "Aldi Prices",
-      "url": "https://voommaps.com/price-lists/aldi-australia-full-price-list/",
-      "thumbnail": "./mobicons/ALDI.svg",
-      "position": 10
-    }
-  ]
-}
-</script>
+  <script id="links-data" type="application/json">
+  {
+    "dials": [
+      {
+        "id": 10,
+        "title": "Search",
+        "url": "https://www.google.com",
+        "thumbnail": "./mobicons/Google_G.svg",
+        "position": 0
+      },
+      {
+        "id": 12,
+        "title": "Perplexity",
+        "url": "https://www.perplexity.ai",
+        "thumbnail": "./mobicons/Perplexity.svg",
+        "position": 1
+      },
+      {
+        "id": 1,
+        "title": "ODB",
+        "url": "https://odb.org/today",
+        "thumbnail": "./mobicons/odb.svg",
+        "position": 2
+      },
+      {
+        "id": 2,
+        "title": "Motivator",
+        "url": "https://greatday.com/",
+        "thumbnail": "./mobicons/rocket.svg",
+        "position": 3
+      },
+      {
+        "id": 3,
+        "title": "Alux",
+        "url": "https://www.youtube.com/@alux/videos",
+        "thumbnail": "./mobicons/YouTube.svg",
+        "position": 4
+      },
+      {
+        "id": 11,
+        "title": "HBR",
+        "url": "https://youtube.com/@harvardbusinessreview/videos",
+        "thumbnail": "./mobicons/YouTube.svg",
+        "position": 5
+      },
+      {
+        "id": 4,
+        "title": "Myron Golden",
+        "url": "https://www.youtube.com/@MyronGolden/videos",
+        "thumbnail": "./mobicons/YouTube.svg",
+        "position": 6
+      },
+      {
+        "id": 5,
+        "title": "Alex Hormozi",
+        "url": "https://www.youtube.com/@AlexHormozi/videos",
+        "thumbnail": "./mobicons/YouTube.svg",
+        "position": 7
+      },
+      {
+        "id": 6,
+        "title": "Simon Sinek",
+        "url": "https://www.youtube.com/@SimonSinek/videos",
+        "thumbnail": "./mobicons/YouTube.svg",
+        "position": 8
+      },
+      {
+        "id": 7,
+        "title": "Lewis Howes",
+        "url": "https://www.youtube.com/@lewishowes/videos",
+        "thumbnail": "./mobicons/YouTube.svg",
+        "position": 9
+      },
+      {
+        "id": 8,
+        "title": "Aldi Prices",
+        "url": "https://voommaps.com/price-lists/aldi-australia-full-price-list/",
+        "thumbnail": "./mobicons/ALDI.svg",
+        "position": 10
+      }
+    ]
+  }
+  </script>
 </body>
 </html>
